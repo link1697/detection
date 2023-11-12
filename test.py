@@ -21,7 +21,7 @@ total_pos_samples = 0
 total_neg_samples = 0
 
 def crop_centre(img):
-    h, w, d = img.shape
+    h, w = img.shape
     l = (w - 64) // 2
     t = (h - 128) // 2
     # print (h, w, l, t)
@@ -33,6 +33,8 @@ def read_filenames():
     f_neg = []
 
     for (dirpath, dirnames, filenames) in os.walk(pos_img_dir):
+        # print(dirpath, dirnames, filenames, "QQQQQQQQQQQQQQQQQQQ*" )
+ 
         f_pos.extend(filenames)
         break
 
@@ -52,8 +54,13 @@ def read_images(f_pos, f_neg):
     array_neg_features = []
     global total_pos_samples
     global total_neg_samples
+    
     for imgfile in f_pos:
-        img = cv2.imread(os.path.join(pos_img_dir, imgfile))
+        print(pos_img_dir + "/"+ imgfile)
+        # img = cv2.imread(os.path.join(pos_img_dir, imgfile))
+        img = cv2.imread(pos_img_dir + '/'+ imgfile)
+        # img = cv2.cv.LoadImage(pos_img_dir + '/'+ imgfile, CV_LOAD_IMAGE_COLOR)
+        print(img)
         cropped = crop_centre(img)
         gray = cv2.cvtColor(cropped, cv2.COLOR_BGR2GRAY)
         features = hog(gray, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), block_norm="L2", feature_vector=True)
