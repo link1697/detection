@@ -66,3 +66,4 @@ python3 test.py --pos INRIAPerson/test_64x128_H96/pos --neg INRIAPerson/test_64x
 
 This would print `True Positives`, `True Negatives`, `False Positives`, `False Negatives`, `Precision`, `Recall` and `F1 Score`.
 # detection
+sudo apt-get install libgtk2.0-dev pkg-config
