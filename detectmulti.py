@@ -11,7 +11,7 @@ def appendRects(i, j, conf, c, rects):
     y = int((i) * pow(scaleFactor, c))
     w = int((64) * pow(scaleFactor, c))
     h = int((128) * pow(scaleFactor, c))
-    rects.append((x, y, conf, w, h)
+    rects.append([x, y, conf, w, h])
 
 parser = argparse.ArgumentParser(description='To read image name')
 

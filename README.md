@@ -57,11 +57,11 @@ Training can use high amounts of memory, so be sure to have a swap space in case
 ## Testing
 After successful training just run:
 ```
-python test.py --pos <path to positive images> --neg <path to negative images>
+python3 test.py --pos <path to positive images> --neg <path to negative images>
 ```
 For INRIA dataset, this would be probably,
 ```
-python test.py --pos INRIAPerson/test_64x128_H96/pos --neg INRIAPerson/test_64x128_H96/neg
+python3 test.py --pos INRIAPerson/test_64x128_H96/pos --neg INRIAPerson/test_64x128_H96/neg
 ```
 
 This would print `True Positives`, `True Negatives`, `False Positives`, `False Negatives`, `Precision`, `Recall` and `F1 Score`.
