@@ -84,12 +84,8 @@ nms_rects = nms(rects, args["nms_threshold"])
 for (a, b, conf, c, d) in rects:
     cv2.rectangle(orig, (a, b), (a + c, b + d), (0, 255, 0), 2)
 
-# cv2.imshow("Before NMS", orig)
-# cv2.waitKey(0)
 cv2.imwrite('output_before_nms_image.jpg', orig)
 for (a, b, conf, c, d) in nms_rects:
     cv2.rectangle(img, (a, b), (a + c, b + d), (0, 255, 0), 2)
 
-# cv2.imshow("After NMS", img)
-# cv2.waitKey(0)
 cv2.imwrite('output_after_nms_image.jpg', img)
