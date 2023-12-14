@@ -1,7 +1,5 @@
 # Pedestrian Detection
 
-**Note:** The code provided may not be compatible with python3. A migration to python3 is in the pipeline.
-
 ## Dependencies
 
 * OpenCV
@@ -10,15 +8,14 @@
 
 ## Running Detection
 
-To test on images, simply run, `python detectmulti.py -i <path to image>`
+To test on images, simply run, `python3 detectmulti.py -i <path to image>`
 
-For example, `python detectmulti.py -i sample_images/pedestrian.jpg`
+For example, `python3 detectmulti.py -i sample_images/pedestrian.jpg`
 
 
-For more options run, `python detectmulti.py -h`
+For more options run, `python3 detectmulti.py -h`
 
 Following are some examples,
-
 
 ![Pedestrian](.readme_images/before_nms1.png?raw=true "Sample Results")
 ![Pedestrian](.readme_images/after_nms1.png?raw=true "Sample Results")
@@ -28,8 +25,8 @@ Following are some examples,
 
 
 ## Training
-This code is meant for Training a Pedestrian Detector using [INRIA Person Dataset](http://pascal.inrialpes.fr/data/human/).  
-**Note:** If the above link doesn't work, then the above dataset can be downloaded from [here](https://drive.google.com/file/d/14GD_pBpBsprPiZlkmtXN_y5K72To16if/view?usp=sharing).
+This code is meant for Training a Pedestrian Detector using [INRIA Person Dataset] 
+The above dataset can be downloaded from [here](https://drive.google.com/file/d/14GD_pBpBsprPiZlkmtXN_y5K72To16if/view?usp=sharing).
 
 Download, Uncompress and place it in the root of this repository.
 
