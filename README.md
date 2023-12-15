@@ -38,11 +38,11 @@ sudo sh fixpng.sh # To fix the broken png files in this dataset.
 
 To train just run:
 ```
-python train.py --pos <path to positive images> --neg <path to negative images>
+python3 train.py --pos <path to positive images> --neg <path to negative images>
 ```
 For INRIA dataset, this would be probably,
 ```
-python train.py --pos INRIAPerson/train_64x128_H96/pos --neg INRIAPerson/train_64x128_H96/neg
+python3 train.py --pos INRIAPerson/train_64x128_H96/pos --neg INRIAPerson/train_64x128_H96/neg
 ```
 
 After training, two new files would be created, namely, `person.pkl` and `person_final.pkl`. The former is the pre eliminary detector and the latter is the improved (hard negatively mined) detector.
