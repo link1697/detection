@@ -55,7 +55,7 @@ while (h >= 128 and w >= 64):
 
             portion = gray[i:i + winSize[0], j:j + winSize[1]]
             features = hog(portion, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), block_norm="L2")
-
+            
             result = clf.predict([features])
 
             if args["visualize"]:
