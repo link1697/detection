@@ -19,7 +19,6 @@ For more options run, `python3 detectmulti.py -h`
 ## Training
 This code is meant for Training a Pedestrian Detector using [INRIA Person Dataset] 
 The above dataset can be downloaded from [here](https://drive.google.com/file/d/14GD_pBpBsprPiZlkmtXN_y5K72To16if/view?usp=sharing).
-
 Download, Uncompress and place it in the root of this repository.
 
 Then just run:
