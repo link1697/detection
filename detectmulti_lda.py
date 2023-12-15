@@ -22,8 +22,10 @@ parser.add_argument('-w', '--winstride', help="Pixels to move in one step, in an
 parser.add_argument('-n', '--nms_threshold', help="Threshold Values between 0 to 1 for NMS thresholding. Default is 0.2", default=0.2, type=float)
 args = vars(parser.parse_args())
 
-clf = joblib.load("person_final_200_20000.pkl")
-
+#this line to choose
+NAME = 'lda'
+clf = joblib.load("final_lda.pkl")
+lda = joblib.load("LDA.pkl")
 orig = cv2.imread(args["image"])
 
 img = orig.copy()
@@ -41,12 +43,12 @@ h, w = gray.shape
 count = 0
 while (h >= 128 and w >= 64):
 
-    print(gray.shape)
+    # print(gray.shape)
 
     h, w = gray.shape
     horiz = w - 64
     vert = h - 128
-    print(horiz, vert)
+    # print(horiz, vert)
     i = 0
     j = 0
     while i < vert:
@@ -55,8 +57,9 @@ while (h >= 128 and w >= 64):
 
             portion = gray[i:i + winSize[0], j:j + winSize[1]]
             features = hog(portion, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(2, 2), block_norm="L2")
-
-            result = clf.predict([features])
+            features = lda.transform([features])
+            # print(features_pca.shape)
+            result = clf.predict(features)
 
             if args["visualize"]:
                 visual = gray.copy()
@@ -65,8 +68,8 @@ while (h >= 128 and w >= 64):
                 cv2.waitKey(1)
 
             if int(result[0]) == 1:
-                print(result, i, j)
-                confidence = clf.decision_function([features])
+                # print(result, i, j)
+                confidence = clf.decision_function(features)
                 appendRects(i, j, confidence, count, rects)
 
             j = j + winStride[0]
@@ -75,7 +78,7 @@ while (h >= 128 and w >= 64):
 
     gray = cv2.resize(gray, (int(w * inverse), int(h * inverse)), interpolation=cv2.INTER_AREA)
     count = count + 1
-    print(count)
+    # print(count)
 
 print(rects)
 
@@ -84,8 +87,8 @@ nms_rects = nms(rects, args["nms_threshold"])
 for (a, b, conf, c, d) in rects:
     cv2.rectangle(orig, (a, b), (a + c, b + d), (0, 255, 0), 2)
 
-cv2.imwrite('200_output_before_nms_image.jpg', orig)
+cv2.imwrite(NAME+'output_before_nms_image.jpg', orig)
 for (a, b, conf, c, d) in nms_rects:
     cv2.rectangle(img, (a, b), (a + c, b + d), (0, 255, 0), 2)
 
-cv2.imwrite('200_output_after_nms_image.jpg', img)
+cv2.imwrite(NAME+'output_after_nms_image.jpg', img)
