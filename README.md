@@ -15,14 +15,6 @@ For example, `python3 detectmulti.py -i sample_images/pedestrian.jpg`
 
 For more options run, `python3 detectmulti.py -h`
 
-Following are some examples,
-
-![Pedestrian](.readme_images/before_nms1.png?raw=true "Sample Results")
-![Pedestrian](.readme_images/after_nms1.png?raw=true "Sample Results")
-
-![Pedestrian](.readme_images/before_nms2.png?raw=true "Sample Results")
-![Pedestrian](.readme_images/after_nms2.png?raw=true "Sample Results")
-
 
 ## Training
 This code is meant for Training a Pedestrian Detector using [INRIA Person Dataset] 
