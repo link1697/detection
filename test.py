@@ -22,7 +22,9 @@ total_neg_samples = 0
 
 def crop_centre(img):
     # print(len(img))
-    h, w, _ = img.shape
+    if not img:
+        return None
+    h, w = img.shape[0], img.shape[1]
     l = (w - 64) // 2
     t = (h - 128) // 2
     # print (h, w, l, t)

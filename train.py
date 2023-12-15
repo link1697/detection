@@ -10,7 +10,7 @@ import argparse
 import random
 from sklearn.decomposition import PCA
 
-MAX_HARD_NEGATIVES = 20000
+MAX_HARD_NEGATIVES = 200
 PCA_N_COMPONENTS = 0.95
 parser = argparse.ArgumentParser(description='Parse Training Directory')
 parser.add_argument('--pos', help='Path to directory containing Positive Images')
@@ -192,7 +192,7 @@ X_array = np.array(X_flattened)
 clf1.fit(X_array, Y)
 print("Trained")
 
-joblib.dump(clf1, 'person_pre-eliminary.pkl')
+joblib.dump(clf1, 'person_pre_eliminary_200/20000.pkl')
 
 print("Hard Negative Mining")
 
@@ -205,7 +205,7 @@ hard_negatives, hard_negative_labels = hard_negative_mine(neg_img_files, winSize
 
 sys.stdout.write("\n")
 hard_negatives = np.array([hn.flatten() for hn in hard_negatives])
-hard_negatives = np.concatenate((hard_negatives, X), axis=0)
+hard_negatives = np.concatenate((hard_negatives, X_array), axis=0)
 hard_negative_labels = np.concatenate((hard_negative_labels, Y), axis=0)
 
 hard_negatives, hard_negative_labels = shuffle(hard_negatives, hard_negative_labels, random_state=0)
@@ -220,4 +220,4 @@ clf2.fit(hard_negatives_pca, hard_negative_labels)
 
 print("Trained and Dumping")
 
-joblib.dump(clf2, 'person_final.pkl')
+joblib.dump(clf2, 'person_final_200/20000.pkl')

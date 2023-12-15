@@ -30,7 +30,7 @@ def overlapping_area(detection_1, detection_2):
     total_area = area_1 + area_2 - overlap_area
     return overlap_area / float(total_area)
 
-def nms(detections, threshold=0.5):
+def nms(detections, threshold=0.1):
     '''
     This function performs Non-Maxima Suppression.
     `detections` consists of a list of detections.
